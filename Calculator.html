@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAMADAN CHAMPIONSHIP 2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            color: white;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            width: calc(100% - 20px);
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+            display: block;
+        }
+        input {
+            background: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+        button {
+            background: #ff4b2b;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        h3 {
+            transition: 0.3s;
+            font-size: 24px;
+        }
+        h3 span {
+            color: #ffdd00;
+            font-weight: bold;
+            font-size: 28px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>RAMADAN CHAMPIOSHIP 2025</h2>
+        <label>Placement Rank:</label>
+        <input type="number" id="placement" min="1" max="25">
+        
+        <label>Number of Kills:</label>
+        <input type="number" id="kills" min="0">
+        
+        <label><input type="checkbox" id="mvpBonus"> MVP Bonus (+3 points)</label><br>
+        <label><input type="checkbox" id="tripleKillBonus"> Triple Kill Bonus (+2 points)</label><br>
+        <label><input type="checkbox" id="squadWipeBonus"> Squad Wipe Bonus (+5 points)</label><br>
+        
+        <button onclick="calculatePoints()">Calculate</button>
+        <h3>Total Points: <span id="totalPoints">0</span></h3>
+    </div>
+
+    <script>
+        function calculatePoints() {
+            let placement = parseInt(document.getElementById("placement").value) || 0;
+            let kills = parseInt(document.getElementById("kills").value) || 0;
+            let mvpBonus = document.getElementById("mvpBonus").checked ? 3 : 0;
+            let tripleKillBonus = document.getElementById("tripleKillBonus").checked ? 2 : 0;
+            let squadWipeBonus = document.getElementById("squadWipeBonus").checked ? 5 : 0;
+            
+            let placementPoints = {1: 12, 2: 9, 3: 8, 4: 7, 5: 6, 6: 5, 7: 4, 8: 3, 9: 2, 10: 1, 11: 1, 12: 1};
+            let points = placementPoints[placement] || 0;
+            let killPoints = kills * 2;
+            let total = points + killPoints + mvpBonus + tripleKillBonus + squadWipeBonus;
+            
+            let totalPointsDisplay = document.getElementById("totalPoints");
+            totalPointsDisplay.innerText = total;
+            totalPointsDisplay.style.transform = "scale(1.3)";
+            setTimeout(() => totalPointsDisplay.style.transform = "scale(1)", 200);
+        }
+    </script>
+<H6>POWERED BY ROGUE REBLE</H6>
+</body>
+</html>
